@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Domun</title>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="img/manzana.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+	<link rel="stylesheet"  href="css/estilos.css">
+    <link rel="stylesheet" href="css/animate.css"/> 
+    <script type="text/javascript" src="jv/java.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+    <!--<script src="jv/artyom.js"></script>   -->
+    <script src="jv/texto_voz/artyom.window.js"></script>
+    <script src="jv/texto_voz/artyom.window.min.js"></script>    
+    <!-- <script src="jv/voz_texto/annyang.min.js"></script>
+    <script src="jv/voz_texto/jquery-3.3.1.js"></script>-->
+    <script src="jv/voz_texto/annyang.min.js"></script>
+    
+    <script type="text/javascript">
+    	
+    	
+
+    window.onload = function(){
+	if(annyang){
+		var commands ={
+			'domun*valor':function(valor){
+				$("#parametro").val(valor);
+
+				console.log(valor);
+
+				if (valor=='siguiente') {adelante();hablar2('ok','i');}
+				else if (valor=='atrás') {atras();hablar2('ok','i');}
+                else if (valor=='Abre menú') {document.getElementById("menu-bar").checked=true;}
+                else if (valor=='Sierra menú') {document.getElementById("menu-bar").checked=false;}
+				else if (valor=='Reproduce') {
+                	hablar2('Verbo, '+verb.innerHTML,'e');
+                	hablar2('pronunciación en Infinitivo, ','e');
+                	hablar2(Infinitivo.value ,'i');
+                	hablar2('pronunciación en Pasado Simple, ','e');
+                	hablar2(Pasado_s.value ,'i');
+                	hablar2('pronunciación en Pasado Participio, ','e');
+					hablar2(Pasado_p.value ,'i');}
+                else if (valor=='Hola') {hablar2('hola','e');}
+
+
+                else if (valor.substr((valor.length*-2),3)=='soy'){
+                	console.log(valor.length+' '+(valor.length*-2)); 
+                    hablar2('Hola, '+valor.substr((4-valor.length))+' yo soy domun, mucho gusto','e');
+                }
+			}
+		};
+
+		/*var commands ={
+			'hola soy*valor':function(valor2){
+				$("#parametro").val(valor2);
+
+				console.log("mi nombre es: "+valor2);
+				
+				hablar2('hola ' + valor2 + ", mi nombre es domun" ,'e');
+			}
+
+		};*/
+		annyang.addCommands(commands);
+		annyang.setLanguage("es");
+		annyang.start();
+		console.log("hola 1");
+	}   console.log("hola 2");
+}
+
+    </script>
+    
+   <!-- <script src="jv/voz_texto/annyang.js"></script>-->
+
+</head>
+
+<body   class = "notranslate">
+<header>
+    
+	<div class="contenedor">
+        
+		<input type="checkbox" id="menu-bar">
+		
+        <label id="label1" for="menu-bar" style="width: 30px" for="btn-menu"><img src="menu.png" width="30px" height="30px" > </label> 
+
+		<nav class="menu">
+		   <!-- <a href="">Drogueria</a>
+        	 <a href="">Restaurante</a>
+		     <a href="">Supermercado</a>
+		     <a href="">Veterinaria</a>
+		     <a href="">Ferreteria</a>
+		     <a href="">Papeleria</a> -->
+   <ul> 
+        
+        <ul class="sub1">
+             <li onclick="Cambiar('Ordenes')"><a href="#">Verbs</a></li> 
+             <li onclick="Cambiar('Colores')"><a href="#">Team</a></li> 
+            
+        </ul>              
+        
+    <!--      <li class="sub2"><a for="btn-menu" onclick="disenador()" href="#">Unit 2</a></li>   
+        
+        <li class="sub3"><a for="btn-menu" onclick="compras()" href="#">Unit 3</a></li>
+        <li class="sub4"><a for="btn-menu" onclick="registro()" href="#">Unit 4</a></li>    
+        <li class="sub5"><a for="btn-menu" onclick="login()" href="#">Unit 5</a></li>  -->
+    </ul> 
+		</nav> 
+
+ <!--  <h1  id="menu-bar" class="icon-motorcycle"> &ensp;Te Lo LLevo</h1> -->
+        
+<center><label id="label3">Domun</label></center>
+        
+  <!--   <input type="checkbox" style="visibility:hidden" id="login">
+    <label class="icon-user"  id="label2" for="login"></label>
+    <nav class="menu2">
+
+   <div id="ingreso">
+           <center><h2 style="margin-bottom: 20px; margin: 60px 0;"> INGRESAR</h2></center>
+           
+           <input type="text" placeholder="&#9786;Correo Electronico" id="txtusuario" name="usuario">
+           <input type="password" placeholder="&#9733;Contraseña" id="txtclave" name="clave">
+           <input type="submit" id="btningresar" value="&#10003;Ingresar" name="ingresar">
+           <a style="color:#fff;" href="http:/">Recuperar Contraseña</a>
+          
+    </div>
+        
+    </nav> -->   
+		
+
+	</div>
+</header>
+
+<main>
+	
+	
+    <article>
+    
+        
+ <div class="animated swing" id="Ordenes">
+       <!--  <center><h2>REGISTRO</h2></center>
+          
+          <center><div style="margin: 10px 0;" class="radio">
+          <input  id="usuario" type="radio" name="gender" value="usuario" onclick="mostrarRegistroUsuario()">
+          <label for="usuario"  >Usuario</label>
+          &ensp; &ensp; &ensp;    
+          <input id="proveedor" type="radio" name="gender" value="proveedor"  onclick="mostrarRegistroProveedor()">
+          <label for="proveedor">Proveedor</label>
+          </div> </center>
+          -->
+          
+          <script type="text/javascript">
+    function mostrarRegistroUsuario(){
+        document.getElementById("cajaUsuario").style.display="block"; 
+        document.getElementById("cajaProveedor").style.display="none"; 
+    }
+    function mostrarRegistroProveedor(){
+          document.getElementById("cajaProveedor").style.display="block"; 
+          document.getElementById("cajaUsuario").style.display="none";    
+    }
+          </script>
+        
+          
+    <section style="margin-top:50px;" id="cajaUsuario">
+        
+       <center>
+        <!-- <img src="img/ordenes/0.png" style="max-width:100%;width:auto;height:auto;"> -->     
+           
+        <!-- <input  id="foto" onclick="hablar(en_orders.innerHTML)" type="image" src="img/ordenes/0.png" style="max-width:100%;width:auto;height:auto;">  -->
+        <SPAN title="Verbo">
+        <h2  id="verb" style="color: black">levantarse/surgir</h2> </SPAN>
+
+
+       <table>
+            <tr>
+               <td style="width: 90%">
+                   <SPAN title="Infinitivo">
+        		   <input onclick="hablar2(Infinitivo.value,'i')" id="Infinitivo" class="animated bounceInDown" style="background: red"  type="submit" value="arose" tabindex="dfeses" > </SPAN>
+               </td>
+               <td style="width: 10%">
+                    <SPAN title=":)"> 
+        		    <input  id="foto" onclick="habilitar(false)" type="image" src="img/microphone2.png" style="max-width:100%;width:auto;height:auto;" class="animated bounceInDown" >  </SPAN>
+               </td>
+            </tr>
+
+            <tr>
+               <td style="width: 90%">
+                   <SPAN title="Pasado Simple">
+        		   <input onclick="hablar2(Pasado_s.value,'i')" id="Pasado_s" class="animated bounceInRight" style="background: orange" type="submit" value="arisen" > </SPAN>
+               </td>
+               <td style="width: 10%">
+                    <SPAN title=":)">
+        		   <input  id="foto" onclick="habilitar(true)" type="image" src="img/microphone2.png"  class="animated bounceInDown" >  </SPAN>
+               </td>
+            </tr>
+
+            <tr>
+               <td style="width: 90%">
+        			<SPAN title="Pasado Participio">
+        			<input onclick="hablar2(Pasado_p.value,'i')" id="Pasado_p" class="animated bounceInLeft" style="background: green"  type="submit" value="arise" > </SPAN>
+               </td>
+               <td style="width: 10%">
+                    <SPAN title=":)">
+        		    <input  id="foto" onclick="hablar(en_orders.innerHTML)" type="image" src="img/microphone2.png" style="max-width:100%;width:auto;height:auto;" class="animated bounceInDown" >  </SPAN>
+               </td>
+            </tr>
+        </table>
+           
+          <table>
+           <tr>
+               <td>
+                    <input style="background-color: dodgerblue" type="submit" value="<<" onclick="atras()">
+               </td>
+               <td>
+                    <input style="background-color: dodgerblue" type="submit" value=">>" onclick="adelante()">
+               </td>
+           </tr>
+          </table>    
+
+                <legend>volumen:</legend>
+                <input min="0" max="1" step="0.1" name="volume" id="volume" value="1" type="range">
+                <legend>rate:</legend>
+                <input min="0.1" max="10" step="0.1" name="rate" id="rate" value="1" type="range">
+
+       </center>  
+        
+        
+           
+     </section>  
+          
+            <section id="cajaProveedor" style="display: none;">
+          <input style="margin: 20px 0;" type="text" placeholder="Nit *" maxlength="10"  name="">
+         <input style="margin: -10px 0;"  type="text" placeholder="Razón Social *"  name="">
+          <table   style="margin: -20px 0;">
+           <tr>
+               <td>
+                    <input type="text" placeholder="Telefono"  name="">
+               </td>
+               <td>
+                    <input type="text" placeholder="Celular *"  name="">
+               </td>
+           </tr>
+          </table>
+          <table   style="margin: -50px 0;">
+            <tr>
+               <td>
+                   <input type="text" placeholder="Dirección 1 *"  name="">
+               </td>
+               <td>
+                   <input type="text" placeholder="Dirección 2"  name="">
+               </td>
+            </tr>
+          </table>
+           <input type="text" placeholder="Correo Electronico *"  name="">
+           <input style="margin: -15px 0;" type="password" placeholder="Contraseña de (Te lo LLevo)"  name="">
+           <input type="submit"  value="&#10003;Registrar" name="Registrar"> 
+     </section>
+          
+</div>  
+        
+    <div  id="Colores">
+
+        
+    </div>    
+        
+        
+    </article>
+    
+    <footer>
+    <center><a href="https://www.facebook.com/Domun-237522250139338/?ref=aymt_homepage_panel"  target="_blank"><img src="img/face.png" alt="facebook"/></a> <!--&ensp;&ensp;
+    <a href="" target="_blank"><img src="img/android.png" alt="Aplicacion android"/></a> -->
+    </center>   
+    <img src="img/mos-2.gif" style="max-width:100%;width:auto;height:auto;"> 
+    </footer>
+    
+</main>
+</body>
+</html>
